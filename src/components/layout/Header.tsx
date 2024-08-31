@@ -9,6 +9,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 
@@ -30,12 +31,12 @@ const elements = [
 function Header() {
   return (
     <header className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className=" mx-auto px-4 py-4">
+      <div className="mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-primary">
-            UIverse
-          </Link>
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="flex items-center space-x-4">
+            <Link href="/" className="text-xl font-bold text-primary">
+              UIverse
+            </Link>
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -76,20 +77,22 @@ function Header() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link href="/challenges" legacyBehavior passHref>
-                    <NavigationMenuLink className={cn("font-medium")}>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                       Challenges
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/spotlight" legacyBehavior passHref>
-                    <NavigationMenuLink className={cn("font-medium")}>
-                      Spotlight
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
+          <Link href="/docs" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Documentation
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
+          </div>
+          <div className="hidden md:flex items-center space-x-4">
             <ModeToggle />
             <Button variant="default">Create</Button>
             <Button variant="outline">Sign In</Button>
